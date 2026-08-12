@@ -4,6 +4,12 @@ By Dodoprospy3
 
 ---
 
+![Waybar Preview](assets/1.png)
+![Waybar Preview](assets/2.png)
+![Waybar Preview](assets/3.png)
+
+---
+
 ## What is this?
 
 My personal Neovim configuration.
