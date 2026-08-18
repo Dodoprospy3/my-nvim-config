@@ -12,6 +12,15 @@ return {
                     markdown = { "prettier" },
                 },
 
+                formatters = {
+                    prettier = {
+                        prepend_args = {
+                            "--tab-width",
+                            "4",
+                        },
+                    },
+                },
+
                 format_on_save = false,
             })
 

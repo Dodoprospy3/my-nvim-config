@@ -9,14 +9,27 @@ return {
 
         harpoon:setup()
 
+        -- Add/remove current file
         vim.keymap.set("n", "<leader>a", function()
-            harpoon:list():add()
-        end, { desc = "Harpoon: Add file" })
+            local list = harpoon:list()
+            local current_file = vim.api.nvim_buf_get_name(0)
 
+            for i, item in ipairs(list.items) do
+                if item.value == current_file then
+                    list:remove_at(i)
+                    return
+                end
+            end
+
+            list:add()
+        end, { desc = "Harpoon: Toggle file" })
+
+        -- Open Harpoon menu
         vim.keymap.set("n", "<C-e>", function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
         end, { desc = "Harpoon: Menu" })
 
+        -- Select files
         vim.keymap.set("n", "<C-1>", function()
             harpoon:list():select(1)
         end, { desc = "Harpoon: File 1" })
