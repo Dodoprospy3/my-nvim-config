@@ -5,6 +5,7 @@ local USER_THEMES = vim.fn.expand("~/.config/omarchy/themes")
 local STOCK_THEMES = "/usr/share/omarchy/themes"
 
 local legacy_map = {
+  aether = "aether",
   catppuccin = "catppuccin",
   ["catppuccin-latte"] = "catppuccin",
   ["tokyo-night"] = "tokyonight",
