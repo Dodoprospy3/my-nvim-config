@@ -247,20 +247,31 @@ local signal_file = STATE_DIR .. "/neovim-theme-signal"
 local last_signal = read_file(signal_file)
 last_signal = last_signal and last_signal:gsub("%s+", "") or ""
 
+local function check_signal()
+  local data = read_file(signal_file)
+  if not data then return end
+  data = data:gsub("%s+", "")
+  if data == "" or data == last_signal then return end
+  last_signal = data
+  local slug, mode = data:match("^(.+)|(.+)$")
+  if slug then
+    M.apply(slug, mode)
+  end
+end
+
 function M.watch()
   local timer = vim.uv.new_timer()
-  if not timer then return end
-  timer:start(2000, 2000, vim.schedule_wrap(function()
-    local data = read_file(signal_file)
-    if not data then return end
-    data = data:gsub("%s+", "")
-    if data == "" or data == last_signal then return end
-    last_signal = data
-    local slug, mode = data:match("^(.+)|(.+)$")
-    if slug then
-      M.apply(slug, mode)
-    end
-  end))
+  if timer then
+    timer:start(2000, 2000, vim.schedule_wrap(check_signal))
+  end
+
+  local event = vim.uv.new_fs_event()
+  if not event then return end
+  local scheduled = vim.schedule_wrap(check_signal)
+  event:start(STATE_DIR, {}, function(err, filename)
+    if err or filename ~= "neovim-theme-signal" then return end
+    vim.defer_fn(scheduled, 50)
+  end)
 end
 
 return M
