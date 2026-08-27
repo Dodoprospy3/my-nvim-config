@@ -4,7 +4,14 @@ require("config.lazy")
 require("config.lsp")
 require("config.transparency")
 vim.cmd.colorscheme("rose-pine")
-vim.opt.cursorline = false
+vim.api.nvim_set_hl(0, "CursorLineNr", {
+    fg = "#ffff00",
+    bold = true,
+})
+
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "Visual", {
     fg = "#ffffff",
