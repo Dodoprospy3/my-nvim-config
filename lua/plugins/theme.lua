@@ -50,4 +50,8 @@ if not seen["ellisonleao/gruvbox.nvim"] then
   specs[#specs + 1] = { "ellisonleao/gruvbox.nvim", lazy = true }
 end
 
+if not seen["rose-pine/neovim"] then
+  specs[#specs + 1] = { "rose-pine/neovim", lazy = true, name = "rose-pine" }
+end
+
 return specs
