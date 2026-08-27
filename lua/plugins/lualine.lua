@@ -2,8 +2,10 @@ return {
     {
         "nvim-lualine/lualine.nvim",
 
+        event = "VeryLazy",
+
         config = function()
-            local grey = "#7e7e7f"
+            local grey = "#494949"
             local text = "#e0e0e0"
 
             require("lualine").setup({
@@ -20,100 +22,66 @@ return {
                             a = { fg = text, bg = grey },
                             b = { fg = text, bg = grey },
                             c = { fg = text, bg = grey },
+                            x = { fg = text, bg = grey },
+                            y = { fg = text, bg = grey },
+                            z = { fg = text, bg = grey },
                         },
 
                         insert = {
                             a = { fg = text, bg = grey },
                             b = { fg = text, bg = grey },
                             c = { fg = text, bg = grey },
+                            x = { fg = text, bg = grey },
+                            y = { fg = text, bg = grey },
+                            z = { fg = text, bg = grey },
                         },
 
                         visual = {
                             a = { fg = text, bg = grey },
                             b = { fg = text, bg = grey },
                             c = { fg = text, bg = grey },
+                            x = { fg = text, bg = grey },
+                            y = { fg = text, bg = grey },
+                            z = { fg = text, bg = grey },
                         },
 
                         replace = {
                             a = { fg = text, bg = grey },
                             b = { fg = text, bg = grey },
                             c = { fg = text, bg = grey },
+                            x = { fg = text, bg = grey },
+                            y = { fg = text, bg = grey },
+                            z = { fg = text, bg = grey },
                         },
 
                         command = {
                             a = { fg = text, bg = grey },
                             b = { fg = text, bg = grey },
                             c = { fg = text, bg = grey },
+                            x = { fg = text, bg = grey },
+                            y = { fg = text, bg = grey },
+                            z = { fg = text, bg = grey },
                         },
 
                         inactive = {
                             a = { fg = text, bg = grey },
                             b = { fg = text, bg = grey },
                             c = { fg = text, bg = grey },
+                            x = { fg = text, bg = grey },
+                            y = { fg = text, bg = grey },
+                            z = { fg = text, bg = grey },
                         },
                     },
                 },
 
                 sections = {
-                    lualine_a = {
-                        {
-                            "mode",
-                            color = {
-                                fg = text,
-                                bg = grey,
-                            },
-                        },
-                    },
+                    lualine_a = { "mode" },
+                    lualine_b = { "branch" },
+                    lualine_c = { "filename" },
 
-                    lualine_b = {
-                        {
-                            "branch",
-                            color = {
-                                fg = text,
-                                bg = grey,
-                            },
-                        },
-                    },
-
-                    lualine_c = {
-                        {
-                            "filename",
-                            color = {
-                                fg = text,
-                                bg = grey,
-                            },
-                        },
-                    },
-
-                    lualine_x = {
-                        {
-                            "filetype",
-                            color = {
-                                fg = text,
-                                bg = grey,
-                            },
-                        },
-                    },
-
-                    lualine_y = {
-                        {
-                            "progress",
-                            color = {
-                                fg = text,
-                                bg = grey,
-                            },
-                        },
-                    },
-
-                    lualine_z = {
-                        {
-                            "location",
-                            color = {
-                                fg = text,
-                                bg = grey,
-                            },
-                        },
-                    },
+                    lualine_x = { "filetype" },
+                    lualine_y = { "progress" },
+                    lualine_z = { "location" },
                 },
             })
         end,
