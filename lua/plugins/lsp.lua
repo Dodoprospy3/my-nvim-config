@@ -16,6 +16,8 @@ return {
         },
 
         config = function()
+            vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
             require("mason").setup()
 
             require("mason-lspconfig").setup({
@@ -52,6 +54,32 @@ return {
                 },
             })
 
+            vim.lsp.config("ts_ls", {
+                root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+            })
+
+            vim.lsp.config("emmet_ls", {
+                filetypes = {
+                    "html",
+                    "css",
+                    "javascript",
+                    "javascriptreact",
+                    "typescriptreact",
+                },
+            })
+
+            vim.lsp.config("lua_ls", {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {
+                                "vim",
+                            },
+                        },
+                    },
+                },
+            })
+
             vim.lsp.enable({
                 -- Python
                 "basedpyright",
@@ -82,28 +110,6 @@ return {
                 -- Config files
                 "bashls",
                 "yamlls",
-            })
-
-            vim.lsp.config("emmet_ls", {
-                filetypes = {
-                    "html",
-                    "css",
-                    "javascript",
-                    "javascriptreact",
-                    "typescriptreact",
-                },
-            })
-
-            vim.lsp.config("lua_ls", {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = {
-                                "vim",
-                            },
-                        },
-                    },
-                },
             })
         end,
     },
